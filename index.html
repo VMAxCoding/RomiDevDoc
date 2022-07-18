@@ -1,0 +1,694 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>readme</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#romi-robot-kit-for-first-快速入门指南">Romi Robot Kit (for FIRST) 快速入门指南</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#-------by-githubtitanrgb">—— by GitHub@TitanRGB</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1-简介">1 简介</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#11-pololu">1.1 Pololu</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#12-romi">1.2 Romi</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#121-学romi的理由">1.2.1 学Romi的理由</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#122-不学romi的理由">1.2.2 不学Romi的理由</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#123-本文立场">1.2.3 本文立场</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2-上手">2 上手</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#21-知识储备">2.1 知识储备</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#211-基本的计算机知识">2.1.1 基本的计算机知识</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#212-arduino--单片机开发板">2.1.2 Arduino / 单片机开发板</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#213-树莓派--linux-开发板">2.1.3 树莓派 / Linux 开发板</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22-准备-romi">2.2 准备 Romi</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#221-硬件组装">2.2.1 硬件组装</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#222-romi-32u4-control-board-底盘-主板-arduino-部分">2.2.2 Romi 32U4 Control Board 底盘 (主板) Arduino 部分</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2221-arduino-ide-配置">2.2.2.1 Arduino IDE 配置</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22211-arduino-ide-安装错误和不识别问题排查">2.2.2.1.1 Arduino IDE 安装错误和不识别问题排查</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2222-arduino-ide-使用-romi-32u4-包库">2.2.2.2 Arduino IDE 使用 Romi 32U4 包库</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2223-romi-32u4-control-board-底盘配置为下位机">2.2.2.3 Romi 32U4 Control Board 底盘配置为下位机</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#223-树莓派上位机部分">2.2.3 树莓派上位机部分</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2231-树莓派系统安装">2.2.3.1 树莓派系统安装</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22311-系统安装的错误排查">2.2.3.1.1 系统安装的错误排查</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2232-连接树莓派">2.2.3.2 连接树莓派</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#22321-首次启动故障排查">2.2.3.2.1 首次启动故障排查</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3-使用">3 使用</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#31-first-开发模式">3.1 FIRST 开发模式</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#311-安装软件开发环境">3.1.1 安装软件开发环境</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3111-windows-系统">3.1.1.1 Windows 系统</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h6"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#31111-windows-安装注意事项">3.1.1.1.1 Windows 安装注意事项</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3112-linux-系统">3.1.1.2 Linux 系统</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h5"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3113-macos-系统">3.1.1.3 MacOS 系统</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#32-arduino-开发模式">3.2 Arduino 开发模式</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#33-树莓派----i²c---arduino-开发模式">3.3 树莓派 -- I²C -&gt; Arduino 开发模式</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='romi-robot-kit-for-first-快速入门指南'><span>Romi Robot Kit (for FIRST) 快速入门指南</span></h1><h3 id='-------by-githubtitanrgb'><span>—— by </span><a href='https://github.com/TitanRGB'><span>GitHub@TitanRGB</span></a></h3><h1 id='1-简介'><span>1 简介</span></h1><h3 id='11-pololu'><span>1.1 Pololu</span></h3><p><span>Pololu 是一个教学&amp;DIY电路硬件器材供应商，类似国内的矽递科技。他们把一些常用的开发板和教学电路等组件产品化，提供给业余开发者和学生。也算是创客教育的一类。</span></p><ul><li><span>Pololu 官网: </span><a href='https://www.pololu.com/' target='_blank' class='url'>https://www.pololu.com/</a></li><li><span>Pololu GitHub: </span><a href='https://github.com/pololu' target='_blank' class='url'>https://github.com/pololu</a></li><li><span>矽递科技官网: </span><a href='https://www.seeedstudio.com/' target='_blank' class='url'>https://www.seeedstudio.com/</a></li><li><span>矽递科技 GitHub: </span><a href='https://github.com/Seeed-Studio/' target='_blank' class='url'>https://github.com/Seeed-Studio/</a></li></ul><h3 id='12-romi'><span>1.2 Romi</span></h3><p><span>Romi 是 Pololu 的产品。Pololu 作为 FIRST 竞赛中的第三方，其产品 Romi 也只是部分还原了 FIRST 竞赛套件的开发流。因此在下文中学习和理解 Romi 的时候，建议把它当做一个</span><strong><span>机器人开发套件</span></strong><span>而不是 </span><strong><span>FIRST 机器人开发套件</span></strong><span>，以提醒这两者间的独立性。</span></p><ul><li><span>Romi官方详情: </span><a href='https://www.pololu.com/product/4022' target='_blank' class='url'>https://www.pololu.com/product/4022</a></li><li><span>Romi主板官方详情: </span><a href='https://www.pololu.com/product/3544' target='_blank' class='url'>https://www.pololu.com/product/3544</a></li><li><span>开发文档: </span><a href='https://www.pololu.com/docs/0J69' target='_blank' class='url'>https://www.pololu.com/docs/0J69</a></li><li><span>FRC版开发文档: </span><a href='https://docs.wpilib.org/en/stable/docs/romi-robot/index.html' target='_blank' class='url'>https://docs.wpilib.org/en/stable/docs/romi-robot/index.html</a></li></ul><h4 id='121-学romi的理由'><span>1.2.1 学Romi的理由</span></h4><p><strong><span>Romi 作为一个简易版的机器人，可以帮助小白快速掌握硬件编程和开发。</span></strong></p><p><span>Romi 和 FIRST 机器人在代码层面存在可复用性，但都在基础层面。这就类似于，学习了伪代码后，会发现各编程语言的基本逻辑是相同的。因此 Romi 确实适合从未接触过硬件编程的人用来入门 FIRST 竞赛的软件开发。但对于已经有过 Arduino 等单片机开发经验的人来说，学习 Romi 对 FIRST 竞赛帮助有限。</span></p><h4 id='122-不学romi的理由'><span>1.2.2 不学Romi的理由</span></h4><p><strong><span>哪怕是不同的 FIRST 竞赛之间，其技术流程也存在较大的差异。这注定了 Romi 套件和 FIRST 竞赛间仍存在较大的独立性。</span></strong></p><p><span>就像 </span><code>1.2.1</code><span> 中说的，如果你已经入门了单片机和编程，或者你希望专注于 FIRST 竞赛的硬件部分，Romi 并不能教会你什么。由于 Romi 是一个来自第三方的开发套件，其自由度远大于 FIRST 竞赛，后者需要的更多是对官方指定硬件的熟悉。更何况，FIRST 竞赛在机械工程方面的难度和发挥空间更是 Romi 所不具备的。</span></p><h4 id='123-本文立场'><span>1.2.3 本文立场</span></h4><p><span>本文将着重于明晰 Romi 开发平台本身的概念，而不是侧重于 FIRST 竞赛相关的模拟。</span><strong><span>如果仅为使 Romi 模拟FRC机器人，可以参看官方文档，按步骤操作即可，并不需要过度学习该平台的技术细节。</span></strong></p><p><span>因此，综合 </span><code>1.2.1</code><span> 和 </span><code>1.2.2</code><span> 所述，</span><strong><span>如果你的目标是参加 FIRST 竞赛，请自行考虑是否应该学习本文。</span></strong></p><h2 id='2-上手'><span>2 上手</span></h2><h3 id='21-知识储备'><span>2.1 知识储备</span></h3><p><span>在继续阅读本文之前，有一些硬件开发的基础知识需要了解。此处将罗列必要的相关概念，以及推荐的学习资料。请在进入下一步之前了解相关概念。</span></p><h4 id='211-基本的计算机知识'><span>2.1.1 基本的计算机知识</span></h4><p><strong><span>此项非必须，但可以大大降低后续学习时的抽象度。</span></strong></p><p><span>时间充裕的话，建议先了解计算机结构以及基本的编程原理。建议可以先从基础的软件编程入手。或者动手组装一台电脑，了解CPU、内存等结构的作用。</span></p><ul><li><span>【强烈推荐】《计算机速成课 [40集全/精校] - Crash Course Computer Science》B站: </span><a href='https://www.bilibili.com/video/BV1EW411u7th' target='_blank' class='url'>https://www.bilibili.com/video/BV1EW411u7th</a></li></ul><p><em><span>*注: 如果你是万科梅沙书院VMA的学生，可以选择 CSE202 / CSE302 / CSE304 (2022) 的课程学习 </span><code>2.1.1</code><span> 的相关概念</span></em></p><h4 id='212-arduino--单片机开发板'><span>2.1.2 Arduino / 单片机开发板</span></h4><p><u><strong><span>Arduino</span></strong></u><span> 是目前最流行的</span><u><strong><span>单片机开发平台</span></strong></u><span>，其中包含 </span><strong><u><span>Arduino 开发板</span></u></strong><span>、</span><strong><u><span>Arduino 固件</span></u></strong><span>、</span><strong><u><span>Arduino 编译器</span></u></strong><span>等。</span></p><ul><li><span>【推荐】《Arduino极速入门教程——两篇文章让你会用Arduino（上）》CSDN: </span><a href='https://yunwuhai.blog.csdn.net/article/details/113528255' target='_blank' class='url'>https://yunwuhai.blog.csdn.net/article/details/113528255</a></li><li><span>【推荐】《Arduino极速入门教程——两篇文章让你会用Arduino（下）》CSDN: </span><a href='https://yunwuhai.blog.csdn.net/article/details/113558575' target='_blank' class='url'>https://yunwuhai.blog.csdn.net/article/details/113558575</a></li><li><span>《Arduino IDE使用教程-超详细》CSDN: </span><a href='https://blog.csdn.net/as480133937/article/details/105331315' target='_blank' class='url'>https://blog.csdn.net/as480133937/article/details/105331315</a></li><li><span>《单片机开发板》百度百科: </span><a href='https://baike.baidu.com/item/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E6%9D%BF' target='_blank' class='url'>https://baike.baidu.com/item/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E6%9D%BF</a></li></ul><p><em><span>*注: 如果你是万科梅沙书院VMA的学生，可以选择 EGR309 (2022) 的课程学习 </span><code>2.1.2</code><span> 的相关概念</span></em></p><h4 id='213-树莓派--linux-开发板'><span>2.1.3 树莓派 / Linux 开发板</span></h4><p><strong><u><span>树莓派</span></u></strong><span>是目前最流行的 </span><u><strong><span>Linux on ARM 开发平台</span></strong></u><span>。其级别从微波炉都在用的单片机，升级到了手机级别的ARM处理器。从运行 Arduino 固件，升级到了 Linux 系统。但其本质都是运行程序。此处不用过多的学习，但至少需要会给树莓派安装操作系统，并且配置开发环境。</span></p><ul><li><span>【推荐】《第一课：什么是树莓派》CSDN: </span><a href='https://blog.csdn.net/qq_27320195/article/details/105215305' target='_blank' class='url'>https://blog.csdn.net/qq_27320195/article/details/105215305</a></li><li><span>【推荐】《第二课：基于树莓派的10个经典项目(树莓派能做什么)》CSDN: </span><a href='https://blog.csdn.net/qq_27320195/article/details/105444549' target='_blank' class='url'>https://blog.csdn.net/qq_27320195/article/details/105444549</a></li><li><span>【推荐】《第三课：购买您的第一个树莓派》CSDN: </span><a href='https://blog.csdn.net/qq_27320195/article/details/108877481' target='_blank' class='url'>https://blog.csdn.net/qq_27320195/article/details/108877481</a></li><li><span>【推荐】《树莓派折腾指南之系统安装及远程登陆（无头安装、无显示器系统安装）》CSDN: </span><a href='https://blog.csdn.net/suool/article/details/105218395' target='_blank' class='url'>https://blog.csdn.net/suool/article/details/105218395</a></li><li><span>《树莓派如何完全无头(无屏无网线无键盘鼠标)安装》CSDN: </span><a href='https://blog.csdn.net/weixin_34321753/article/details/88986145' target='_blank' class='url'>https://blog.csdn.net/weixin_34321753/article/details/88986145</a></li><li><span>《Linux 教程》RUNOOB: </span><a href='https://www.runoob.com/linux/linux-tutorial.html' target='_blank' class='url'>https://www.runoob.com/linux/linux-tutorial.html</a></li><li><span>《Linux基本指令》博客园: </span><a href='https://www.cnblogs.com/xiaxiangming/p/15096542.html' target='_blank' class='url'>https://www.cnblogs.com/xiaxiangming/p/15096542.html</a></li></ul><h3 id='22-准备-romi'><span>2.2 准备 Romi</span></h3><p><span>Romi Robot Kit for FIRST 小车可以被拆分为车底盘部分以及树莓派开发板。其中，不带树莓派的底盘本身就是一块 Arduino 主板，熟悉 Arduino 的人看到 Romi 32U4 时 就能马上想到 Arduino UNO R3 使用的单片机 ATMEGA328PU4。而树莓派在 Romi 的运行中并不是必需品，但是是作为上位机，通过 I²C 提供更复杂的控制。</span></p><p><span>因此，不需要树莓派做上位机，Romi 也能作为一个 Arduino 机器人正常的运行。而安装树莓派后则可以进行更复杂的控制，甚至模拟 FIRST 的开发环境。</span></p><p><strong><span>如果仅为模拟 FIRST 竞赛的环境，可以直接参看下方的开发文档。而本文会提供非FRC版，更全面的配置介绍。</span></strong></p><ul><li><span>开发文档: </span><a href='https://www.pololu.com/docs/0J69' target='_blank' class='url'>https://www.pololu.com/docs/0J69</a></li><li><span>FRC版开发文档: </span><a href='https://docs.wpilib.org/en/stable/docs/romi-robot/index.html' target='_blank' class='url'>https://docs.wpilib.org/en/stable/docs/romi-robot/index.html</a></li><li><span>Romi Robot Kit for FIRST: </span><a href='https://www.pololu.com/product/4022' target='_blank' class='url'>https://www.pololu.com/product/4022</a></li><li><span>Romi 32U4 Control Board: </span><a href='https://www.pololu.com/product/3544' target='_blank' class='url'>https://www.pololu.com/product/3544</a></li><li><span>Romi包库开发文档: </span><a href='https://pololu.github.io/romi-32u4-arduino-library/' target='_blank' class='url'>https://pololu.github.io/romi-32u4-arduino-library/</a></li><li><span>【推荐】Romi + 树莓派4B文档 (非官方): </span><a href='https://github.com/czbeatty/FRC-Romi-Programming-Course/tree/main/Lessons' target='_blank' class='url'>https://github.com/czbeatty/FRC-Romi-Programming-Course/tree/main/Lessons</a></li><li><span>Romi + 树莓派4B示范视频 (非官方): </span><a href='https://www.youtube.com/watch?v=mop51tpWWcA' target='_blank' class='url'>https://www.youtube.com/watch?v=mop51tpWWcA</a></li></ul><h4 id='221-硬件组装'><span>2.2.1 硬件组装</span></h4><p><span>直接参看官方文档:</span></p><ul><li><span>开发文档-硬件组装: </span><a href='https://www.pololu.com/docs/0J69/4' target='_blank' class='url'>https://www.pololu.com/docs/0J69/4</a></li><li><span>FRC版开发文档-硬件组装: </span><a href='https://docs.wpilib.org/en/stable/docs/romi-robot/hardware.html' target='_blank' class='url'>https://docs.wpilib.org/en/stable/docs/romi-robot/hardware.html</a></li></ul><h4 id='222-romi-32u4-control-board-底盘-主板-arduino-部分'><span>2.2.2 Romi 32U4 Control Board 底盘 (主板) Arduino 部分</span></h4><h5 id='2221-arduino-ide-配置'><span>2.2.2.1 Arduino IDE 配置</span></h5><p><span>安装 Arduino IDE:</span></p><ul><li><span>【推荐】《Arduino极速入门教程——两篇文章让你会用Arduino（上）》CSDN: </span><a href='https://yunwuhai.blog.csdn.net/article/details/113528255' target='_blank' class='url'>https://yunwuhai.blog.csdn.net/article/details/113528255</a></li><li><span>【推荐】《Arduino极速入门教程——两篇文章让你会用Arduino（下）》CSDN: </span><a href='https://yunwuhai.blog.csdn.net/article/details/113558575' target='_blank' class='url'>https://yunwuhai.blog.csdn.net/article/details/113558575</a></li><li><span>《Arduino IDE使用教程-超详细》CSDN: </span><a href='https://blog.csdn.net/as480133937/article/details/105331315' target='_blank' class='url'>https://blog.csdn.net/as480133937/article/details/105331315</a></li></ul><p><span>直接参看官方文档:</span></p><ul><li><span>开发文档-ArduinoIDE: </span><a href='https://www.pololu.com/docs/0J69/5.2' target='_blank' class='url'>https://www.pololu.com/docs/0J69/5.2</a></li><li><span>库管理器安装 </span><code>Pololu A-Star Boards</code></li></ul><p><span>测试代码:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="c++" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c++"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.52344px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">Blink</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">Turns an LED on for one second, then off for one second, repeatedly.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">the correct LED pin independent of which board is used.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">If you want to know what pin the on-board LED is connected to on your Arduino</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">model, check the Technical Specs of your board at:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">https://www.arduino.cc/en/Main/Products</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">modified 8 May 2014</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">by Scott Fitzgerald</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">modified 2 Sep 2016</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">by Arturo Guadalupi</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">modified 8 Sep 2016</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">by Colby Newman</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">This example code is in the public domain.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// the setup function runs once when you press reset or power the board</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">setup</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// initialize digital pin LED_BUILTIN as an output.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">pinMode</span>(<span class="cm-variable">LED_BUILTIN</span>, <span class="cm-variable">OUTPUT</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// the loop function runs over and over again forever</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">loop</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">LED_BUILTIN</span>, <span class="cm-variable">HIGH</span>); &nbsp; <span class="cm-comment">// turn the LED on (HIGH is the voltage level)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">1000</span>); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-comment">// wait for a second</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">digitalWrite</span>(<span class="cm-variable">LED_BUILTIN</span>, <span class="cm-variable">LOW</span>); &nbsp; &nbsp;<span class="cm-comment">// turn the LED off by making the voltage LOW</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">1000</span>); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-comment">// wait for a second</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 853px;"></div><div class="CodeMirror-gutters" style="display: none; height: 853px;"></div></div></div></pre><h6 id='22211-arduino-ide-安装错误和不识别问题排查'><span>2.2.2.1.1 Arduino IDE 安装错误和不识别问题排查</span></h6><ul><li><span>《arduino usb串口驱动_Arduino开发环境的搭建与编程入门基础教程》CSDN: </span><a href='https://blog.csdn.net/weixin_39844590/article/details/111197427' target='_blank' class='url'>https://blog.csdn.net/weixin_39844590/article/details/111197427</a></li><li><span>《arduino usb串口驱动_正确安装驱动的姿势》CSDN: </span><a href='https://blog.csdn.net/weixin_39734399/article/details/111205281' target='_blank' class='url'>https://blog.csdn.net/weixin_39734399/article/details/111205281</a></li></ul><h5 id='2222-arduino-ide-使用-romi-32u4-包库'><span>2.2.2.2 Arduino IDE 使用 Romi 32U4 包库</span></h5><p><span>直接参看官方文档:</span></p><ul><li><span>开发文档-ArduinoIDE 使用 Romi 库: </span><a href='https://www.pololu.com/docs/0J69/6' target='_blank' class='url'>https://www.pololu.com/docs/0J69/6</a></li><li><span>库管理器安装 </span><code>Romi32U4</code></li><li><span>Romi包库开发文档: </span><a href='https://pololu.github.io/romi-32u4-arduino-library/' target='_blank' class='url'>https://pololu.github.io/romi-32u4-arduino-library/</a></li></ul><p><span>测试代码:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="c++" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c++"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.52344px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/*</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">2022.5.14 new file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">This example code is written by:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">https://github.com/SynthesisDu</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">*/</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#include &lt;Romi32U4.h&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Romi32U4Motors</span> <span class="cm-variable">motors</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Romi32U4ButtonA</span> <span class="cm-variable">buttonA</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">setup</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// Wait for the user to press button A.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">buttonA</span>.<span class="cm-variable">waitForButton</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// Delay so that the robot does not move away while the user is</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// still touching it.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">1000</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">void</span> <span class="cm-def">loop</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// Run forward.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">ledYellow</span>(<span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> (<span class="cm-variable-3">int</span> <span class="cm-variable">speed</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">speed</span> <span class="cm-operator">&lt;=</span> <span class="cm-number">400</span>; <span class="cm-variable">speed</span><span class="cm-operator">++</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setLeftSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setRightSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> (<span class="cm-variable-3">int</span> <span class="cm-variable">speed</span> <span class="cm-operator">=</span> <span class="cm-number">400</span>; <span class="cm-variable">speed</span> <span class="cm-operator">&gt;=</span> <span class="cm-number">0</span>; <span class="cm-variable">speed</span><span class="cm-operator">--</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setLeftSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setRightSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// Run backward.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">ledYellow</span>(<span class="cm-number">0</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> (<span class="cm-variable-3">int</span> <span class="cm-variable">speed</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">speed</span> <span class="cm-operator">&gt;=</span> <span class="cm-operator">-</span><span class="cm-number">400</span>; <span class="cm-variable">speed</span><span class="cm-operator">--</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setLeftSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setRightSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">for</span> (<span class="cm-variable-3">int</span> <span class="cm-variable">speed</span> <span class="cm-operator">=</span> <span class="cm-operator">-</span><span class="cm-number">400</span>; <span class="cm-variable">speed</span> <span class="cm-operator">&lt;=</span> <span class="cm-number">0</span>; <span class="cm-variable">speed</span><span class="cm-operator">++</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setLeftSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">motors</span>.<span class="cm-variable">setRightSpeed</span>(<span class="cm-variable">speed</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">delay</span>(<span class="cm-number">500</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1245px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1245px;"></div></div></div></pre><h5 id='2223-romi-32u4-control-board-底盘配置为下位机'><span>2.2.2.3 Romi 32U4 Control Board 底盘配置为下位机</span></h5><p><span>使用树莓派控制 Arduino 下位机时使用 I²C 信号传输，此时 Arduino 需要烧录专门的程序用以接收上位机的控制。</span></p><p><strong><span>FRC版不需要此步骤，其定制版树莓派系统会自行烧录程序，跟随FRC版文档即可。</span></strong></p><p><span>直接参看官方文档: </span></p><ul><li><span>开发文档-I²C 信号规范: </span><a href='https://www.pololu.com/docs/0J69/3.7' target='_blank' class='url'>https://www.pololu.com/docs/0J69/3.7</a></li><li><span>开发文档-将 Arduino 配置为下位机: </span><a href='https://www.pololu.com/blog/577/building-a-raspberry-pi-robot-with-the-a-star-32u4-robot-controller' target='_blank' class='url'>https://www.pololu.com/blog/577/building-a-raspberry-pi-robot-with-the-a-star-32u4-robot-controller</a></li><li><span>官方包库-Romi 32U4 下位机包库: </span><a href='https://github.com/pololu/pololu-rpi-slave-arduino-library' target='_blank' class='url'>https://github.com/pololu/pololu-rpi-slave-arduino-library</a></li></ul><h4 id='223-树莓派上位机部分'><span>2.2.3 树莓派上位机部分</span></h4><h5 id='2231-树莓派系统安装'><span>2.2.3.1 树莓派系统安装</span></h5><p><span>FRC版系统安装教程:</span></p><ul><li><span>FRC版开发文档-树莓派系统安装: </span><a href='https://docs.wpilib.org/en/stable/docs/romi-robot/imaging-romi.html' target='_blank' class='url'>https://docs.wpilib.org/en/stable/docs/romi-robot/imaging-romi.html</a></li></ul><p><span>普通系统安装教程:</span></p><ul><li><span>《树莓派折腾指南之系统安装及远程登陆（无头安装、无显示器系统安装）》CSDN: </span><a href='https://blog.csdn.net/suool/article/details/105218395' target='_blank' class='url'>https://blog.csdn.net/suool/article/details/105218395</a></li><li><span>《树莓派如何完全无头(无屏无网线无键盘鼠标)安装》CSDN: </span><a href='https://blog.csdn.net/weixin_34321753/article/details/88986145' target='_blank' class='url'>https://blog.csdn.net/weixin_34321753/article/details/88986145</a></li></ul><h6 id='22311-系统安装的错误排查'><span>2.2.3.1.1 系统安装的错误排查</span></h6><ul><li><p><strong><span>系统盘烧录不成功</span></strong></p><ol start='' ><li><p><span>如果教程中使用的软件无法排故，可以尝试 Rufus，我目前用过最强大的系统烧录软件。市面上有和没有的系统，家用主板到服务器我基本都试过，没遇到过 Rufus 造成的问题。</span></p><ul><li><span>Rufus 发布页: </span><a href='https://rufus.ie/zh/' target='_blank' class='url'>https://rufus.ie/zh/</a></li><li><span>Rufus 微软商城版: </span><a href='https://apps.microsoft.com/store/detail/rufus/9PC3H3V7Q9CH' target='_blank' class='url'>https://apps.microsoft.com/store/detail/rufus/9PC3H3V7Q9CH</a></li><li><span>Rufus GitHub: </span><a href='https://github.com/pbatard/rufus' target='_blank' class='url'>https://github.com/pbatard/rufus</a></li></ul></li><li><p><span>如果 Rufus 无法解决，接下来考虑下载的系统镜像不完整，尝试重新下载或更换镜像。</span></p></li><li><p><span>如果还有问题，基本可以怀疑是硬件的问题，可以尝试更换读卡器、更换SD/TF卡。因为这类存储卡转接USB也依靠一个桥主控芯片，便宜货确实容易有兼容性问题。</span></p></li></ol></li><li><p><strong><span>系统盘不引导</span></strong></p><ol start='' ><li><span>如果新烧录的系统盘无法运行树莓派系统，直接重试一遍烧录系统的步骤。</span></li><li><span>上一步无效的话尝试以其他文件格式格式化存储介质。例如切换 GPT/MBR 分区表，修改 NTFS/FAT32 文件系统。</span></li><li><span>如果依然不行，换个系统镜像试试，否则为硬件问题。其实第二步和第三步概率相近，基本不分先后。</span></li><li><span>此处硬件问题就比较杂了，如果缺乏经验，也没什么好的建议了。</span></li></ol></li></ul><h5 id='2232-连接树莓派'><span>2.2.3.2 连接树莓派</span></h5><p><span>此处多提一嘴，如果使用树莓派4B等有无线网卡的型号，是可以直接连接树莓派的 WiFi 的。不同版本的操作系统可能有不同的 WiFi 密码，可以在 GitHub 下载的位置查看。</span></p><h6 id='22321-首次启动故障排查'><span>2.2.3.2.1 首次启动故障排查</span></h6><ul><li><p><strong><span>通电红灯常亮，绿灯不亮</span></strong>
+<span>按理说刚通电时，红灯常亮，绿灯会闪烁。红灯表示通电，绿灯表示读盘。绿灯闪烁说明树莓派开始加载操作系统了。而我本人就遇到通电后绿灯完全不亮的情况。</span></p><ul><li><span>我的排查结果是 Romi 提供的供电不足，树莓派无法开机。在更换电池前我直接给树莓派外接了 TypeC 的充电器，直接正常开机。</span></li><li><span>后续扒掉外接线，更换电池，同样正常开机。</span></li><li><span>此故障的原因大概是化学电池的电压波动超限，其电压依然能够点亮 Romi 的 LED 但无法让树莓派开机。</span></li></ul></li></ul><h2 id='3-使用'><span>3 使用</span></h2><h3 id='31-first-开发模式'><span>3.1 FIRST 开发模式</span></h3><h4 id='311-安装软件开发环境'><span>3.1.1 安装软件开发环境</span></h4><p><span>安装 WPILib 模组版 VSCode，之后便可和其他 FIRST 机器人一样在 VSCode 中开发。</span></p><ul><li><span>官方安装包 GitHub 下载: </span><a href='https://github.com/wpilibsuite/allwpilib/releases' target='_blank' class='url'>https://github.com/wpilibsuite/allwpilib/releases</a></li></ul><h5 id='3111-windows-系统'><span>3.1.1.1 Windows 系统</span></h5><p><span>Windows 版本的安装包以 .iso 文件的形式打包。安装的部分可以参考这个视频:</span></p><ul><li><span>Romi + 树莓派4B示范视频 (非官方): </span><a href='https://www.youtube.com/watch?v=mop51tpWWcA' target='_blank' class='url'>https://www.youtube.com/watch?v=mop51tpWWcA</a></li></ul><h6 id='31111-windows-安装注意事项'><span>3.1.1.1.1 Windows 安装注意事项</span></h6><ul><li><span>直接用压缩软件解压此 .iso 文件可能会提示文件损坏，其实无需解压，只需要右键文件 --&gt; 打开方式 --&gt; 文件资源管理器，直接运行安装程序即可。</span></li><li><span>运行安装程序后，偶尔会有命令行窗口弹出。</span></li><li><span>建议在能访问外网的网络环境下安装。</span></li><li><span>有 VPN 的情况下，包含在线下载，总安装时常一般不超过10分钟。</span></li></ul><h5 id='3112-linux-系统'><span>3.1.1.2 Linux 系统</span></h5><p><span>Linux 版本的安装包以 .tar.gz 文件的形式打包。</span></p><h5 id='3113-macos-系统'><span>3.1.1.3 MacOS 系统</span></h5><p><span>MacOS 版本的安装包以 .dmg 文件的形式打包。</span></p><h3 id='32-arduino-开发模式'><span>3.2 Arduino 开发模式</span></h3><p><span>直接参看官方文档:</span></p><ul><li><span>开发文档-ArduinoIDE 使用 Romi 库: </span><a href='https://www.pololu.com/docs/0J69/6' target='_blank' class='url'>https://www.pololu.com/docs/0J69/6</a></li><li><span>Romi包库开发文档: </span><a href='https://pololu.github.io/romi-32u4-arduino-library/' target='_blank' class='url'>https://pololu.github.io/romi-32u4-arduino-library/</a></li></ul><h3 id='33-树莓派----i²c---arduino-开发模式'><span>3.3 树莓派 -- I²C -&gt; Arduino 开发模式</span></h3><p><span>直接参看官方文档:</span></p><ul><li><span>开发文档-I²C 信号规范: </span><a href='https://www.pololu.com/docs/0J69/3.7' target='_blank' class='url'>https://www.pololu.com/docs/0J69/3.7</a></li><li><span>开发文档-将 Arduino 配置为下位机: </span><a href='https://www.pololu.com/blog/577/building-a-raspberry-pi-robot-with-the-a-star-32u4-robot-controller' target='_blank' class='url'>https://www.pololu.com/blog/577/building-a-raspberry-pi-robot-with-the-a-star-32u4-robot-controller</a></li><li><span>官方包库-Romi 32U4 下位机包库: </span><a href='https://github.com/pololu/pololu-rpi-slave-arduino-library' target='_blank' class='url'>https://github.com/pololu/pololu-rpi-slave-arduino-library</a></li></ul></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
