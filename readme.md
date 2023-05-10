@@ -1,6 +1,6 @@
 # Romi Robot Kit (for FIRST) 快速入门指南
 
-### —— by [GitHub@TitanRGB](https://github.com/TitanRGB)
+### —— by [GitHub@Mehver|这水怎么没味儿啊](https://github.com/Mehver)
 
 # 1 简介
 
